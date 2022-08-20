@@ -1,11 +1,9 @@
 import { Textarea, Box, Button } from '@chakra-ui/react';
 import mainGenFunc from '../../../data/codeGenerators';
 
-const CreateBBCode = ({ data }) => {
+const CreateBBCode = ({ data, cat }) => {
     const { user, forum, manager } = data;
-    const wording = mainGenFunc(forum, user, manager);
-
-    console.log(data);
+    const wording = cat.generate(forum, user, manager);
 
     function copy() {
         navigator.clipboard.writeText(wording);

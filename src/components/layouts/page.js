@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Flex, Link } from '@chakra-ui/react';
+import { Container, Heading, Text, Flex, Link } from '@chakra-ui/react';
 
 const PageLayout = ({ title, subtitle, usefulLinks, children }) => {
     return (
@@ -31,11 +31,11 @@ const PageLayout = ({ title, subtitle, usefulLinks, children }) => {
                     ))}
                 </Flex>
             )}
-            <Flex mb={5} mt={2} flexDirection={'column'}>
+            <Flex mb={5} mt={2} flexDirection={'column'} align={'center'}>
                 <Heading variant={'normal-h'}>{title}</Heading>
                 <Heading variant={'sub-h'}>{subtitle}</Heading>
             </Flex>
-            <Box>{children}</Box>
+            <Container maxW={'container.md'}>{children}</Container>
         </Flex>
     );
 };

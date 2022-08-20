@@ -1,4 +1,4 @@
-import { Container, Flex } from '@chakra-ui/react';
+import { Container, Flex, Text, Divider } from '@chakra-ui/react';
 import Menu from './menu';
 
 const MainLayout = ({ children }) => {
@@ -16,10 +16,21 @@ const MainLayout = ({ children }) => {
                 boxShadow={'0 2px 25px #00000011'}
                 py={10}
                 px={20}
-                h={'100%'}
+                h={'max-content'}
             >
                 <Menu />
+
                 {children}
+                <Divider mt={10} />
+                <Text
+                    mt={4}
+                    mb={-5}
+                    color={'gray.300'}
+                    fontStyle={'italic'}
+                    textAlign='center'
+                >
+                    עדכון אחרון: 20.08.22
+                </Text>
             </Container>
         </Flex>
     );

@@ -24,12 +24,14 @@ const Creator = () => {
     const [user, setUser] = useState(defaultUserManager);
     const [manager, setManager] = useState(defaultUserManager);
 
-    const resetAll = () => {
-        setForum(defaultCat);
-        setCat(defaultFrm);
-        setUser(defaultUserManager);
-        setManager(defaultUserManager);
-    };
+    // const resetAll = () => {
+    //     setForum(defaultCat);
+    //     setCat(defaultFrm);
+    //     setUser(defaultUserManager);
+    //     setManager(defaultUserManager);
+    // };
+
+    console.log(cat);
 
     const [stage, setStage] = useState(0);
     const maxStages = 2; // starting from 0
@@ -61,7 +63,9 @@ const Creator = () => {
                     cat={cat}
                 />
             )}
-            {stage === 2 && <CreateBBCode data={{ forum, user, manager }} />}
+            {stage === 2 && (
+                <CreateBBCode cat={cat} data={{ forum, user, manager }} />
+            )}
         </Box>
     );
 };
