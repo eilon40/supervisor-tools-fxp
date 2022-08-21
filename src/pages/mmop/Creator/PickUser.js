@@ -8,13 +8,27 @@ import {
     TabPanel,
     TabList,
 } from '@chakra-ui/react';
+import InlineError from '../../../components/general/InlineError';
 import { useState } from 'react';
 import Fields from '../../../components/layouts/fields';
 
 const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
-    const [usr, setUsr] = useState({}); // {name: string, profile: string, reason: string}
-    const [mngr, setMngr] = useState({}); // {name: string, profile: string, reason: string}
-    const [frm, setFrm] = useState({}); // {name: string, link: string, reason: string}
+    const [err, setErr] = useState([false, '']);
+    const [usr, setUsr] = useState({
+        name: '',
+        profile: '',
+        reason: '',
+    });
+    const [mngr, setMngr] = useState({
+        name: '',
+        profile: '',
+        reason: '',
+    });
+    const [frm, setFrm] = useState({
+        name: '',
+        href: '',
+        reason: '',
+    });
 
     // usr setters:
     const setUsrName = (name) =>
@@ -36,15 +50,42 @@ const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
     const setFrmName = (name) =>
         setFrm((prevValue) => ({ ...prevValue, name: name }));
     const setFrmLink = (link) =>
-        setFrm((prevValue) => ({ ...prevValue, link: link }));
+        setFrm((prevValue) => ({ ...prevValue, href: link }));
     const setFrmReason = (reason) =>
         setFrm((prevValue) => ({ ...prevValue, reason: reason }));
 
     function nextStep() {
-        if (Object.entries(usr).length) setUser(usr);
-        if (Object.entries(frm).length) setForum(frm);
-        if (Object.entries(mngr).length) setManager(mngr);
-        inc();
+        const usrVals = Object.values(usr);
+        const frmVals = Object.values(frm);
+        const mngrVals = Object.values(mngr);
+
+        let isOk = false;
+
+        const values = usrVals.concat(frmVals).concat(mngrVals);
+
+        console.log(values);
+
+        for (let i = 0; i < values.length; i++) {
+            if (values[i] === '') {
+                setErr([
+                    true,
+                    'אחד מהשדות אינו מלא. במידה ואין זוכה באחד השדות יש לסמן בסימון המתאים לכך.',
+                ]);
+                console.log('yey err');
+                break;
+            }
+            if (i === values.length - 1) {
+                isOk = true;
+            }
+        }
+
+        if (isOk) {
+            setErr([false, '']);
+            setForum(frm);
+            setUser(usr);
+            setManager(mngr);
+            inc();
+        }
     }
 
     return (
@@ -55,6 +96,11 @@ const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
                     <Tab color='fxpRed'>מנהל השבוע</Tab>
                     <Tab color='fxpGold'>פורום השבוע</Tab>
                 </TabList>
+                {err[0] && (
+                    <InlineError mb={-6} mt={6}>
+                        {err[1]}
+                    </InlineError>
+                )}
                 <TabPanels>
                     <TabPanel>
                         <Fields

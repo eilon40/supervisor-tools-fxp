@@ -12,7 +12,7 @@ import { useState, useRef, useEffect } from 'react';
 import { AiOutlineLink } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 
-const Fields = ({ nameSetter, title, linkSetter, reasonSetter, name }) => {
+const Fields = ({ nameSetter, linkSetter, reasonSetter, name }) => {
     const [disableAll, setDisableAll] = useState(false);
     const [fieldName, setFieldName] = useState('');
     const [fieldColor, setFieldColor] = useState('');
@@ -36,17 +36,21 @@ const Fields = ({ nameSetter, title, linkSetter, reasonSetter, name }) => {
                 setFieldName('משתמש/מנהל/פורום');
                 return setFieldColor('#3e3e3e');
         }
-    }, []);
+    }, [name]);
 
     function disableAndClearFields(e) {
         setDisableAll(e.target.checked);
         if (e.target.checked) {
-            nameSetter('לא נבחר השבוע');
-            linkSetter('http://www.fxp.co.il');
-            reasonSetter(' ');
             nameRef.current.value = '';
             linkRef.current.value = '';
             reasonRef.current.value = '';
+            nameSetter('לא נבחר השבוע');
+            linkSetter('http://www.fxp.co.il');
+            reasonSetter('~');
+        } else {
+            nameSetter('');
+            linkSetter('');
+            reasonSetter('');
         }
     }
 
@@ -69,8 +73,7 @@ const Fields = ({ nameSetter, title, linkSetter, reasonSetter, name }) => {
                 </Checkbox>
             </Box>
             <Flex
-                minW='30%'
-                maxW='50%'
+                maxW={{ base: '100%', md: '60%' }}
                 flexDirection={'column'}
                 gap={5}
                 margin='0 auto'

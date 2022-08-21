@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 const Mmoh = () => {
     return (
         <Box>
-            <PageLayout>בדיקה בדיקה בדיקה</PageLayout>
+            <PageLayout>הכלי עדיין בבנייה {';)'}</PageLayout>
         </Box>
     );
 };

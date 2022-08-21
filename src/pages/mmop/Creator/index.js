@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react';
-import { useState } from 'react';
-import { PickCategory, PickUser } from './stages';
-import CreateBBCode from './CreateBBCode';
+import { useState, useCallback } from 'react';
+import { PickCategory, PickUser, CreateBBCode } from './stages';
 
 const Creator = () => {
     const defaultCat = { name: '-', link: 'https://www.fxp.co.il/' };
@@ -31,20 +30,18 @@ const Creator = () => {
     //     setManager(defaultUserManager);
     // };
 
-    console.log(cat);
-
     const [stage, setStage] = useState(0);
     const maxStages = 2; // starting from 0
 
-    const inc = () => {
+    const inc = useCallback(() => {
         if (stage < maxStages) {
             setStage((n) => n + 1);
         }
-    };
+    }, [stage]);
 
-    const dec = () => {
+    const dec = useCallback(() => {
         if (stage > 0) setStage((n) => n - 1);
-    };
+    }, [stage]);
 
     return (
         <Box>

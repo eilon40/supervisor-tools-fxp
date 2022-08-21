@@ -1,5 +1,5 @@
 import { Container, Flex, Text, Divider } from '@chakra-ui/react';
-import Menu from './menu';
+import Menu from '../nav/menu';
 
 const MainLayout = ({ children }) => {
     return (
@@ -15,7 +15,7 @@ const MainLayout = ({ children }) => {
                 bg='white'
                 boxShadow={'0 2px 25px #00000011'}
                 py={10}
-                px={20}
+                px={{ base: 5, md: 20 }}
                 h={'max-content'}
             >
                 <Menu />
