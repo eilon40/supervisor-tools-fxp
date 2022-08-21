@@ -1,5 +1,5 @@
 import { Textarea, Box, Button } from '@chakra-ui/react';
-import mainGenFunc from '../../../data/codeGenerators';
+// import mainGenFunc from '../../../data/codeGenerators';
 
 const CreateBBCode = ({ data, cat }) => {
     const { user, forum, manager } = data;

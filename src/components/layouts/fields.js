@@ -8,23 +8,42 @@ import {
     Heading,
     Checkbox,
 } from '@chakra-ui/react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { AiOutlineLink } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 
-const Fields = ({ nameSetter, title, linkSetter, reasonSetter, isForum }) => {
+const Fields = ({ nameSetter, title, linkSetter, reasonSetter, name }) => {
     const [disableAll, setDisableAll] = useState(false);
+    const [fieldName, setFieldName] = useState('');
+    const [fieldColor, setFieldColor] = useState('');
 
     const nameRef = useRef(null);
     const linkRef = useRef(null);
     const reasonRef = useRef(null);
+
+    useEffect(() => {
+        switch (name) {
+            case 'forum':
+                setFieldName('פורום');
+                return setFieldColor('#daa520');
+            case 'manager':
+                setFieldName('מנהל');
+                return setFieldColor('#ff0000');
+            case 'user':
+                setFieldName('משתמש');
+                return setFieldColor('#3e3e3e');
+            default:
+                setFieldName('משתמש/מנהל/פורום');
+                return setFieldColor('#3e3e3e');
+        }
+    }, []);
 
     function disableAndClearFields(e) {
         setDisableAll(e.target.checked);
         if (e.target.checked) {
             nameSetter('לא נבחר השבוע');
             linkSetter('http://www.fxp.co.il');
-            reasonSetter('-');
+            reasonSetter(' ');
             nameRef.current.value = '';
             linkRef.current.value = '';
             reasonRef.current.value = '';
@@ -33,6 +52,9 @@ const Fields = ({ nameSetter, title, linkSetter, reasonSetter, isForum }) => {
 
     return (
         <Box my={10} textAlign='center'>
+            <Heading variant={'fields-h'}>
+                שדה בחירת <span style={{ color: fieldColor }}>{fieldName}</span>
+            </Heading>
             <Box mb={10}>
                 <Checkbox
                     onChange={(e) => disableAndClearFields(e)}
@@ -43,10 +65,9 @@ const Fields = ({ nameSetter, title, linkSetter, reasonSetter, isForum }) => {
                     py={2}
                     colorScheme='messenger'
                 >
-                    סמן במידה ואין {isForum ? 'פורום' : 'משתמש / מנהל'} השבוע.
+                    סמן במידה ואין {fieldName} השבוע.
                 </Checkbox>
             </Box>
-            <Heading variant={'fields-h'}>{title}</Heading>
             <Flex
                 minW='30%'
                 maxW='50%'
@@ -60,11 +81,7 @@ const Fields = ({ nameSetter, title, linkSetter, reasonSetter, isForum }) => {
                         ref={nameRef}
                         disabled={disableAll}
                         onChange={(e) => nameSetter(e.target.value.trim())}
-                        placeholder={
-                            isForum
-                                ? 'הזן את שם הפורום...'
-                                : 'הזן את שם המשתמש...'
-                        }
+                        placeholder={`הזן את שם ה${fieldName}`}
                     />
                 </InputGroup>
                 <InputGroup>
@@ -73,22 +90,14 @@ const Fields = ({ nameSetter, title, linkSetter, reasonSetter, isForum }) => {
                         ref={linkRef}
                         disabled={disableAll}
                         onChange={(e) => linkSetter(e.target.value.trim())}
-                        placeholder={
-                            isForum
-                                ? 'הזן את הקישור לפורום...'
-                                : 'הזן את הקישור לפרופיל המשתמש...'
-                        }
+                        placeholder={`הזן קישור תקין ל${fieldName}`}
                     />
                 </InputGroup>
                 <Textarea
                     ref={reasonRef}
                     disabled={disableAll}
                     onChange={(e) => reasonSetter(e.target.value.trim())}
-                    placeholder={
-                        isForum
-                            ? 'הזן מדוע נבחר פורום זה...'
-                            : 'הזן מדוע נבחר המשתמש/מנהל זה...'
-                    }
+                    placeholder={`הזן סיבה מפורטת מדוע נבחר ${fieldName} זה`}
                 />
             </Flex>
         </Box>

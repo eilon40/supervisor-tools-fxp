@@ -51,35 +51,34 @@ const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
         <Box mt={10}>
             <Tabs variant='soft-rounded' isFitted colorScheme='messenger'>
                 <TabList>
-                    <Tab>מנהל השבוע</Tab>
-                    <Tab>משתמש השבוע</Tab>
-                    <Tab>פורום השבוע</Tab>
+                    <Tab color='fxpDark'>משתמש השבוע</Tab>
+                    <Tab color='fxpRed'>מנהל השבוע</Tab>
+                    <Tab color='fxpGold'>פורום השבוע</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel>
                         <Fields
-                            title={'בחירת משתמש'}
                             nameSetter={setUsrName}
                             linkSetter={setUsrLink}
                             reasonSetter={setUsrReason}
+                            name={'user'}
                         />
                     </TabPanel>
 
                     <TabPanel>
                         <Fields
-                            title={'בחירת מנהל'}
                             nameSetter={setMngrName}
                             linkSetter={setMngrLink}
                             reasonSetter={setMngrReason}
+                            name={'manager'}
                         />
                     </TabPanel>
                     <TabPanel>
                         <Fields
-                            title={'בחירת פורום'}
                             nameSetter={setFrmName}
                             linkSetter={setFrmLink}
                             reasonSetter={setFrmReason}
-                            isForum={true}
+                            name={'forum'}
                         />
                     </TabPanel>
                 </TabPanels>

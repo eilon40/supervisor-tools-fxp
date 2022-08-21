@@ -27,7 +27,7 @@ const PickCat = ({ setCat, stage, inc }) => {
                 <option value={-1}>--- בחר קטגוריה מהרשימה ---</option>
                 {c.map((cat, index) => (
                     <option key={index} value={cat.id}>
-                        קטגוריית {cat.name} ({cat.id})
+                        {!cat.isForum && 'קטגוריית'} {cat.name} ({cat.id})
                     </option>
                 ))}
             </Select>

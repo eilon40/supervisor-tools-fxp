@@ -12,6 +12,9 @@ const styles = {
 const colors = {
     fxpBlue: '#3399ff',
     fxpDark: '#3e3e3e',
+    fxpGold: '#daa520',
+    fxpRed: '#ff0000',
+    fxpSup: '#0000ff',
 };
 
 const components = {
