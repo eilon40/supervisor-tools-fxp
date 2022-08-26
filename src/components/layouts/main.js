@@ -1,4 +1,13 @@
-import { Container, Flex, Text, Divider, Link } from '@chakra-ui/react';
+import {
+    Container,
+    Flex,
+    Text,
+    Divider,
+    Link,
+    Box,
+    Image,
+} from '@chakra-ui/react';
+import logo from '../../images/logo-text.png';
 import Menu from '../nav/menu';
 
 const MainLayout = ({ children }) => {
@@ -18,6 +27,16 @@ const MainLayout = ({ children }) => {
                 px={{ base: 5, md: 20 }}
                 h={'max-content'}
             >
+                <Flex justify={'center'}>
+                    <Link href={'/'}>
+                        <Image
+                            src={logo}
+                            w={'100%'}
+                            maxW={'8rem'}
+                            alt='tool logo'
+                        />
+                    </Link>
+                </Flex>
                 <Menu />
 
                 {children}

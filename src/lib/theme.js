@@ -68,10 +68,9 @@ const components = {
             'menu-btn': {
                 color: '#fafafa',
                 bg: '#333333',
-                border: '1px solid #333333',
                 _hover: {
                     bg: 'fxpBlue',
-                    boxShadow: '-3px 3px 0 #333333',
+                    boxShadow: '0 0 10px #33333355',
                 },
                 _active: {
                     bg: 'fxpBlue',

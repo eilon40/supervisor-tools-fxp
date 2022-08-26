@@ -15,7 +15,6 @@ import { HamburgerIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import links from '../../data/routes';
 
 const MenuComponent = () => {
-    const menuSpacer = '|';
     const isCurrentPage = (href) =>
         window.location.pathname + window.location.search === href;
 
@@ -43,20 +42,15 @@ const MenuComponent = () => {
                 </MenuList>
             </Menu>
             <Flex
-                style={{
-                    border: '1px #ccc solid',
-                    padding: '.5em',
-                    width: '100%',
-                }}
                 gap={4}
-                my={5}
+                mt={5}
+                mb={5}
                 display={{ base: 'none', md: 'flex' }}
                 align='center'
+                justify='center'
             >
-                <Text fontWeight={'bold'}>תפריט:</Text>
                 {links.map((item, index) => (
                     <Flex gap={4} key={index}>
-                        {index !== 0 && menuSpacer}
                         <Link
                             style={{ marginInlineStart: 0 }}
                             key={index}
