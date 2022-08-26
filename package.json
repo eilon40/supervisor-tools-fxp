@@ -1,5 +1,6 @@
 {
-    "name": "fxppeulagenerator",
+    "name": "fxpsupervisortools",
+    "author": "ArielMiddleware",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

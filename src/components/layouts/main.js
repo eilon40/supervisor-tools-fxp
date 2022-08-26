@@ -1,4 +1,4 @@
-import { Container, Flex, Text, Divider } from '@chakra-ui/react';
+import { Container, Flex, Text, Divider, Link } from '@chakra-ui/react';
 import Menu from '../nav/menu';
 
 const MainLayout = ({ children }) => {
@@ -22,15 +22,27 @@ const MainLayout = ({ children }) => {
 
                 {children}
                 <Divider mt={10} />
-                <Text
+                <Flex
                     mt={4}
                     mb={-5}
+                    flexDirection={'column'}
+                    justify='center'
+                    textAlign={'center'}
                     color={'gray.300'}
-                    fontStyle={'italic'}
-                    textAlign='center'
                 >
-                    עדכון אחרון: 20.08.22
-                </Text>
+                    <Text fontStyle={'italic'} textAlign='center'>
+                        עדכון אחרון: 20.08.22
+                    </Text>
+                    <Text>
+                        Built with ❤️ by{' '}
+                        <Link
+                            target='_blank'
+                            href='https://www.fxp.co.il/member.php?u=749522'
+                        >
+                            Middleware
+                        </Link>
+                    </Text>
+                </Flex>
             </Container>
         </Flex>
     );
