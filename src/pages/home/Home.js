@@ -22,13 +22,15 @@ const Home = () => {
 
     useEffect(() => {
         const favoriteCat = window.localStorage.getItem('fav');
-        const { id } = JSON.parse(favoriteCat);
+        if (favoriteCat) {
+            const { id } = JSON.parse(favoriteCat);
 
-        if (id) {
-            const favoriteCategory = c.filter((cat) => cat.id === id)[0];
+            if (id) {
+                const favoriteCategory = c.filter((cat) => cat.id === id)[0];
 
-            if (favoriteCategory) {
-                setHasFavCat(favoriteCategory);
+                if (favoriteCategory) {
+                    setHasFavCat(favoriteCategory);
+                }
             }
         }
     }, []);
