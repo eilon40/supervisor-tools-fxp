@@ -31,7 +31,7 @@ const MainLayout = ({ children }) => {
                     color={'gray.300'}
                 >
                     <Text fontStyle={'italic'} textAlign='center'>
-                        עדכון אחרון: 20.08.22
+                        עדכון אחרון: 26.08.22
                     </Text>
                     <Text>
                         Built with ❤️ by{' '}
