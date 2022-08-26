@@ -640,28 +640,28 @@ const categories = [
     [/CENTER]`;
         },
         generateMmoh: (user, manager) => {
-            return `[CENTER][IMG]https://images.weserv.nl/?url=i.imgur.com/hhx0Wkk.png[/IMG]
+            return `CENTER][IMG]https://images.weserv.nl/?url=i.imgur.com/hhx0Wkk.png[/IMG]
  
-        [FONT=almoni-dl]
-        [TABLE="class: cms_table_cms_table_cms_table_cms_table_cms_table_cms_table_cms_table_cms_table_grid, width: 925, align: center"]
-        [TR]
-        [TD="bgcolor: #6699FF"][TABLE="class: cms_table_cms_table_cms_table, width: 925, align: center"]
-        [TR]
-        [TD="bgcolor: #3366FF, align: center"][COLOR=#ffffff][B]מנהל החודש[/B][/COLOR][/TD]
-        [TD="bgcolor: #3366FF, align: center"][B][COLOR=#ffffff]משתמש החודש[/COLOR][/B][/TD]
-        [/TR]
-        [TR]
-        [TD="bgcolor: #FFFFFF, align: center"][URL="${user.profile}"][COLOR=#43cbdb][B]${user.name}
-        [/B][/COLOR][/URL]${user.reason}[/TD]
-        [TD="bgcolor: #FFFFFF, align: center"][URL="${manager.profile}"][COLOR=#43cbdb][B]${manager.name}[/B][/COLOR][/URL]
-        ${manager.reason}[/TD]
-        [/TR]
-        [/TABLE]
-        [/TD]
-        [/TR]
-        [/TABLE]
-        [/FONT]
-        [/CENTER]`;
+            [FONT=almoni-dl]
+            [TABLE="class: cms_table_cms_table_cms_table_cms_table_cms_table_cms_table_cms_table_cms_table_grid, width: 925, align: center"]
+    [TR]
+    [TD="bgcolor: #6699FF"][TABLE="class: cms_table_cms_table_cms_table, width: 925, align: center"]
+    [TR]
+    [TD="bgcolor: #3366FF, align: center"][COLOR=#ffffff][B]משתמש החודש[/B][/COLOR][/TD]
+    [TD="bgcolor: #3366FF, align: center"][B][COLOR=#ffffff]מנהל החודש[/COLOR][/B][/TD]
+    [/TR]
+    [TR]
+    [TD="bgcolor: #FFFFFF, align: center"][B][URL="${user.profile}"][COLOR=#3399ff]${user.name}[/COLOR][/URL][/B]
+    ${user.reason}[/TD]
+    [TD="bgcolor: #FFFFFF, align: center"][B][URL="${manager.profile}"][COLOR=#daa520]${manager.name}[/COLOR][/URL][/B]
+    ${manager.reason}[/TD]
+    [/TR]
+    [/TABLE]
+    [/TD]
+    [/TR]
+    [/TABLE]
+    [/FONT]
+    [/CENTER]`;
         },
     },
     {
