@@ -121,7 +121,7 @@ const categories = [
         id: 576,
         isForum: true,
         generate: (forum = null, user, manager) => {
-            return `[CENTER][IMG]https://i.imagesup.co/images2/eedd355c500e517fb3401df1781aa6578860a21a.png[/IMG]
+            return `[CENTER][IMG]https://i.imagesup.co/images2/656f462430923f02bf3eb6a971aff869b3aa5323.png[/IMG]
         [/CENTER]
         [TABLE="width: 900, align: center"]
         [TR="bgcolor: #43c6db"]
