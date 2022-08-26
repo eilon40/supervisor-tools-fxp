@@ -12,7 +12,7 @@ import InlineError from '../../../components/general/InlineError';
 import { useState } from 'react';
 import Fields from '../../../components/layouts/fields';
 
-const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
+const PickUser = ({ type, setUser, setManager, setForum, dec, inc }) => {
     const [err, setErr] = useState([false, '']);
     const [usr, setUsr] = useState({
         name: '',
@@ -61,9 +61,10 @@ const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
 
         let isOk = false;
 
-        const values = usrVals.concat(frmVals).concat(mngrVals);
-
-        console.log(values);
+        const values =
+            type === 'mmop'
+                ? usrVals.concat(frmVals).concat(mngrVals)
+                : usrVals.concat(mngrVals);
 
         for (let i = 0; i < values.length; i++) {
             if (values[i] === '') {
@@ -92,9 +93,13 @@ const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
         <Box mt={10}>
             <Tabs variant='soft-rounded' isFitted colorScheme='messenger'>
                 <TabList>
-                    <Tab color='fxpDark'>משתמש השבוע</Tab>
-                    <Tab color='fxpRed'>מנהל השבוע</Tab>
-                    <Tab color='fxpGold'>פורום השבוע</Tab>
+                    <Tab color='fxpDark'>
+                        משתמש {type === 'mmop' ? 'השבוע' : 'החודש'}
+                    </Tab>
+                    <Tab color='fxpRed'>
+                        מנהל {type === 'mmop' ? 'השבוע' : 'החודש'}
+                    </Tab>
+                    {type === 'mmop' && <Tab color='fxpGold'>פורום השבוע</Tab>}
                 </TabList>
                 {err[0] && (
                     <InlineError mb={-6} mt={6}>
@@ -108,6 +113,7 @@ const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
                             linkSetter={setUsrLink}
                             reasonSetter={setUsrReason}
                             name={'user'}
+                            type={type}
                         />
                     </TabPanel>
 
@@ -117,16 +123,20 @@ const PickUser = ({ cat, setUser, setManager, setForum, dec, inc }) => {
                             linkSetter={setMngrLink}
                             reasonSetter={setMngrReason}
                             name={'manager'}
+                            type={type}
                         />
                     </TabPanel>
-                    <TabPanel>
-                        <Fields
-                            nameSetter={setFrmName}
-                            linkSetter={setFrmLink}
-                            reasonSetter={setFrmReason}
-                            name={'forum'}
-                        />
-                    </TabPanel>
+                    {type === 'mmop' && (
+                        <TabPanel>
+                            <Fields
+                                nameSetter={setFrmName}
+                                linkSetter={setFrmLink}
+                                reasonSetter={setFrmReason}
+                                name={'forum'}
+                                type={type}
+                            />
+                        </TabPanel>
+                    )}
                 </TabPanels>
             </Tabs>
             <Flex gap={4} justify='center'>

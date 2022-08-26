@@ -4,15 +4,14 @@ import {
     Route,
     Navigate,
 } from 'react-router-dom';
-import { Home, Mmop, Mmoh } from './pages';
+import { Home, SelectTask } from './pages';
 
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/mmop' element={<Mmop />} />
-                <Route path='/mmoh' element={<Mmoh />} />
+                <Route path='/tasks' element={<SelectTask />} />
                 <Route path='*' element={<Navigate to='/' />} />
             </Routes>
         </Router>

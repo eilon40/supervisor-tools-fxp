@@ -21,4 +21,26 @@ const mmop = {
         'בכל סוף שבוע מרביעי ועד צאת שבת בשעה 19:20, נדרש להגיש משתמש, מנהל ופורום השבוע.',
 };
 
-export { mmop };
+const mmoh = {
+    usefulLinks: [
+        {
+            name: 'אשכול ממו"ח',
+            href: 'https://www.fxp.co.il/showthread.php?t=16436014',
+            color: 'green',
+        },
+        {
+            name: 'פורום גבוהה',
+            href: 'https://www.fxp.co.il/forumdisplay.php?f=108',
+            color: 'blue',
+        },
+        {
+            name: 'דגשים לבחירה שלכם',
+            href: 'https://www.fxp.co.il/showthread.php?t=19213527',
+            color: 'orange',
+        },
+    ],
+    title: 'הגשת ממו"ח חודשית',
+    subtitle: 'הסבר + מועד',
+};
+
+export { mmop, mmoh };

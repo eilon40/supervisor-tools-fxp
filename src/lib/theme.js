@@ -63,6 +63,13 @@ const components = {
                 },
                 margin: '1.5em 0',
             },
+            'menu-btn': {
+                color: '#fafafa',
+                bg: '#333333',
+                _hover: {
+                    bg: 'fxpBlue',
+                },
+            },
         },
         defaultProps: {
             size: 'sm',

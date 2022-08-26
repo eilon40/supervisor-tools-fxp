@@ -12,7 +12,7 @@ import { useState, useRef, useEffect } from 'react';
 import { AiOutlineLink } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 
-const Fields = ({ nameSetter, linkSetter, reasonSetter, name }) => {
+const Fields = ({ type, nameSetter, linkSetter, reasonSetter, name }) => {
     const [disableAll, setDisableAll] = useState(false);
     const [fieldName, setFieldName] = useState('');
     const [fieldColor, setFieldColor] = useState('');
@@ -44,7 +44,8 @@ const Fields = ({ nameSetter, linkSetter, reasonSetter, name }) => {
             nameRef.current.value = '';
             linkRef.current.value = '';
             reasonRef.current.value = '';
-            nameSetter('לא נבחר השבוע');
+            // {type === 'mmop' ? 'השבוע' : 'החודש'}
+            nameSetter(`לא נבחר ${type === 'mmop' ? 'השבוע' : 'החודש'}`);
             linkSetter('http://www.fxp.co.il');
             reasonSetter('~');
         } else {
@@ -69,7 +70,8 @@ const Fields = ({ nameSetter, linkSetter, reasonSetter, name }) => {
                     py={2}
                     colorScheme='messenger'
                 >
-                    סמן במידה ואין {fieldName} השבוע.
+                    סמן במידה ואין {fieldName}{' '}
+                    {type === 'mmop' ? 'השבוע' : 'החודש'}.
                 </Checkbox>
             </Box>
             <Flex

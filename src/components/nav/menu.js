@@ -8,8 +8,10 @@ import {
     MenuList,
     MenuItem,
     IconButton,
+    Button,
+    Tooltip,
 } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import links from '../../data/routes';
 
 const MenuComponent = () => {
@@ -28,7 +30,12 @@ const MenuComponent = () => {
                 <MenuList>
                     {links.map((item, index) => (
                         <Link href={item.href} target={item.target} key={index}>
-                            <MenuItem>{item.name}</MenuItem>
+                            <MenuItem>
+                                {item.name}{' '}
+                                {item.target === '_blank' && (
+                                    <ExternalLinkIcon ml={1} />
+                                )}
+                            </MenuItem>
                         </Link>
                     ))}
                 </MenuList>
@@ -42,6 +49,7 @@ const MenuComponent = () => {
                 gap={4}
                 my={5}
                 display={{ base: 'none', md: 'flex' }}
+                align='center'
             >
                 <Text fontWeight={'bold'}>תפריט:</Text>
                 {links.map((item, index) => (
@@ -53,7 +61,14 @@ const MenuComponent = () => {
                             href={item.href}
                             target={item.target}
                         >
-                            {item.name}
+                            <Tooltip hasArrow label={item.label}>
+                                <Button variant='menu-btn' alt={'asdasd'}>
+                                    {item.name}{' '}
+                                    {item.target === '_blank' && (
+                                        <ExternalLinkIcon ml={1} mr={-1} />
+                                    )}
+                                </Button>
+                            </Tooltip>
                         </Link>
                     </Flex>
                 ))}

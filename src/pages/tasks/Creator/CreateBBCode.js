@@ -2,12 +2,19 @@ import { Textarea, Text, Link, Box, Flex, Button } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 // import mainGenFunc from '../../../data/codeGenerators';
 
-const CreateBBCode = ({ data, cat }) => {
+const CreateBBCode = ({ data, cat, type }) => {
     const { user, forum, manager } = data;
     const [showCode, setShowCode] = useState(false);
     const [copied, setCopied] = useState(false);
-    const wording = cat.generate(forum, user, manager);
-    const linkHagasha = 'https://www.fxp.co.il/showthread.php?t=16436014';
+    const wording =
+        type === 'mmop'
+            ? cat.generate(forum, user, manager) // פונקציה מחוללת ממו"פ
+            : cat.generateMmoh(user, manager); // פונקציה מחוללת ממו"ח
+
+    const linkHagasha =
+        type === 'mmop'
+            ? 'https://www.fxp.co.il/showthread.php?t=16436014' // קישור לממו"פ
+            : 'https://www.fxp.co.il/showthread.php?t=12349038'; // קישור לממו"ח
 
     useEffect(() => {
         if (copied) {

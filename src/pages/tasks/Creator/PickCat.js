@@ -1,9 +1,12 @@
 import { Select, Box, Button } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import InlineError from '../../../components/general/InlineError';
 import c from '../../../data/categories';
 
-const PickCat = ({ setCat, stage, inc }) => {
+const PickCat = ({ setCat, stage, inc, type }) => {
+    const [currentCat, setCurrentCat] = useState({});
     const [catId, setCatId] = useState(-1);
+    const [err, setErr] = useState({ error: false, messeage: '' });
     const catLink = 'https://www.fxp.co.il/forumdisplay.php?f=';
 
     useEffect(() => {
@@ -13,13 +16,40 @@ const PickCat = ({ setCat, stage, inc }) => {
                 ...pickedCat,
                 href: `${catLink}${pickedCat.id}`,
             };
-            setCat(cat);
+            setCurrentCat(cat);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [catId]);
 
+    function nextStep() {
+        if (type === 'mmop') {
+            if (currentCat.generate) {
+                setCat(currentCat);
+                setErr({ error: false, message: '' });
+                inc();
+            } else {
+                setErr({
+                    error: true,
+                    messeage: `לקטגוריית ${currentCat.name} לא ניתן להפיק ממו"פ כעת.`,
+                });
+            }
+        } else if (type === 'mmoh') {
+            if (currentCat.generateMmoh) {
+                setCat(currentCat);
+                setErr({ error: false, message: '' });
+                inc();
+            } else {
+                setErr({
+                    error: true,
+                    messeage: `לקטגוריית ${currentCat.name} לא ניתן להפיק ממו"ח כעת.`,
+                });
+            }
+        }
+    }
+
     return (
         <Box>
+            {err.error && <InlineError mb={5}>{err.messeage}</InlineError>}
             <Select
                 disabled={stage !== 0}
                 onChange={(e) => setCatId(parseInt(e.target.value))}
@@ -36,7 +66,7 @@ const PickCat = ({ setCat, stage, inc }) => {
                     <Button
                         variant='next-btn'
                         disabled={stage !== 0 || catId === -1}
-                        onClick={inc}
+                        onClick={nextStep}
                     >
                         הבא
                     </Button>
