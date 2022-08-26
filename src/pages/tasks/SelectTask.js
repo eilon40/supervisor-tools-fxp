@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react';
 import { mmoh, mmop } from '../../data/pages';
 import Creator from './Creator';
 import { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const SelectTasks = () => {
     const [pageData, setPageData] = useState({ ...mmop, current: 'mmop' });
@@ -13,15 +14,16 @@ const SelectTasks = () => {
 
         switch (actionParam) {
             case 'mmop':
-                return setPageData({ ...mmop, current: 'mmop' });
-            case 'mmoh':
-                return setPageData({ ...mmoh, current: 'mmoh' });
-            default:
                 setPageData({ ...mmop, current: 'mmop' });
-                return (window.location.href = '/');
+                break;
+            case 'mmoh':
+                setPageData({ ...mmoh, current: 'mmoh' });
+                break;
+            default:
+                setPageData(null);
         }
     }, []);
-
+    if (pageData === null) return <Navigate to={'/'} />;
     return (
         <Box>
             <PageLayout
