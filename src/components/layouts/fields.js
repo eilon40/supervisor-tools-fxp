@@ -44,7 +44,6 @@ const Fields = ({ type, nameSetter, linkSetter, reasonSetter, name }) => {
             nameRef.current.value = '';
             linkRef.current.value = '';
             reasonRef.current.value = '';
-            // {type === 'mmop' ? 'השבוע' : 'החודש'}
             nameSetter(`לא נבחר ${type === 'mmop' ? 'השבוע' : 'החודש'}`);
             linkSetter('http://www.fxp.co.il');
             reasonSetter('~');

@@ -651,9 +651,9 @@ const categories = [
         [TD="bgcolor: #3366FF, align: center"][B][COLOR=#ffffff]משתמש החודש[/COLOR][/B][/TD]
         [/TR]
         [TR]
-        [TD="bgcolor: #FFFFFF, align: center"][COLOR=#43cbdb][B][URL="${user.profile}"]${user.name}[/URL]
-        [/B][/COLOR]${user.reason}[/TD]
-        [TD="bgcolor: #FFFFFF, align: center"][COLOR=#43cbdb][B][URL="${manager.profile}"]${manager.name}[/URL][/B][/COLOR]
+        [TD="bgcolor: #FFFFFF, align: center"][URL="${user.profile}"][COLOR=#43cbdb][B]${user.name}
+        [/B][/COLOR][/URL]${user.reason}[/TD]
+        [TD="bgcolor: #FFFFFF, align: center"][URL="${manager.profile}"][COLOR=#43cbdb][B]${manager.name}[/B][/COLOR][/URL]
         ${manager.reason}[/TD]
         [/TR]
         [/TABLE]

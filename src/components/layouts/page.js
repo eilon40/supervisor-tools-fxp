@@ -50,7 +50,7 @@ const PageLayout = ({ title, subtitle, usefulLinks, children }) => {
                         py={1}
                         display={{ base: 'none', md: 'flex' }}
                     >
-                        <Text fontWeight={''}>קישורים שימושיים:</Text>
+                        <Text>קישורים שימושיים:</Text>
                         {usefulLinks.map((link, index) => (
                             <Flex m={0} key={index} gap={4}>
                                 {/* {index !== 0 && '//'} */}

@@ -11,6 +11,7 @@ const styles = {
 
 const colors = {
     fxpBlue: '#3399ff',
+    fxpDarkBlue: '#3355aa',
     fxpDark: '#3e3e3e',
     fxpGold: '#daa520',
     fxpRed: '#ff0000',
@@ -45,6 +46,7 @@ const components = {
             },
         },
     },
+
     Button: {
         variants: {
             'next-btn': {
@@ -66,8 +68,10 @@ const components = {
             'menu-btn': {
                 color: '#fafafa',
                 bg: '#333333',
+                border: '1px solid #333333',
                 _hover: {
                     bg: 'fxpBlue',
+                    boxShadow: '-3px 3px 0 #333333',
                 },
                 _active: {
                     bg: 'fxpBlue',
