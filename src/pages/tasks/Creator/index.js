@@ -36,8 +36,14 @@ const Creator = ({ current, favCat }) => {
             const favCatData = c.filter((cat) => cat.id === favCat)[0];
 
             if (favCatData) {
-                setCat(favCatData);
-                inc();
+                if (current === 'mmop' && favCatData.generate) {
+                    setCat(favCatData);
+                    inc();
+                }
+                if (current === 'mmoh' && favCatData.generateMmoh) {
+                    setCat(favCatData);
+                    inc();
+                }
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

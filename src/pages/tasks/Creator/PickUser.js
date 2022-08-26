@@ -63,7 +63,7 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc, cat }) => {
         let isOk = false;
 
         const values =
-            type === 'mmop'
+            type === 'mmop' && !cat.isForum
                 ? usrVals.concat(frmVals).concat(mngrVals)
                 : usrVals.concat(mngrVals);
 
