@@ -23,6 +23,7 @@ const SelectTasks = () => {
                 setPageData(null);
         }
     }, []);
+
     if (pageData === null) return <Navigate to={'/'} />;
     return (
         <Box>

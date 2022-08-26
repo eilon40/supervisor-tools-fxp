@@ -57,11 +57,7 @@ const MenuComponent = () => {
                             href={isCurrentPage(item.href) ? '#' : item.href}
                             target={item.target}
                         >
-                            <Tooltip
-                                hasArrow
-                                placement={'top'}
-                                label={item.label}
-                            >
+                            <Tooltip hasArrow mt={2} label={item.label}>
                                 <Button
                                     isActive={isCurrentPage(item.href)}
                                     variant='menu-btn'
