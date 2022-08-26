@@ -7,10 +7,12 @@ import { Navigate } from 'react-router-dom';
 
 const SelectTasks = () => {
     const [pageData, setPageData] = useState({ ...mmop, current: 'mmop' });
+    const [catParam, setCatParam] = useState(-1);
 
     useEffect(() => {
         const searchQuery = new URLSearchParams(window.location.search);
         const actionParam = searchQuery.get('action');
+        const favCatId = parseInt(searchQuery.get('cat'));
 
         switch (actionParam) {
             case 'mmop':
@@ -22,6 +24,10 @@ const SelectTasks = () => {
             default:
                 setPageData(null);
         }
+
+        if (favCatId) {
+            setCatParam(favCatId);
+        }
     }, []);
 
     if (pageData === null) return <Navigate to={'/'} />;
@@ -32,7 +38,7 @@ const SelectTasks = () => {
                 usefulLinks={pageData.usefulLinks}
                 subtitle={pageData.subtitle}
             >
-                <Creator current={pageData.current} />
+                <Creator favCat={catParam} current={pageData.current} />
             </PageLayout>
         </Box>
     );

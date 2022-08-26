@@ -7,12 +7,13 @@ import {
     TabPanels,
     TabPanel,
     TabList,
+    Heading,
 } from '@chakra-ui/react';
 import InlineError from '../../../components/general/InlineError';
 import { useState } from 'react';
 import Fields from '../../../components/layouts/fields';
 
-const PickUser = ({ type, setUser, setManager, setForum, dec, inc }) => {
+const PickUser = ({ type, setUser, setManager, setForum, dec, inc, cat }) => {
     const [err, setErr] = useState([false, '']);
     const [usr, setUsr] = useState({
         name: '',
@@ -91,6 +92,9 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc }) => {
 
     return (
         <Box mt={10}>
+            <Heading variant={'normal-h'} mb={10} textAlign='center'>
+                {!cat.isForum && 'קטגוריית'} {cat.name}
+            </Heading>
             <Tabs variant='soft-rounded' isFitted colorScheme='messenger'>
                 <TabList>
                     <Tab color='fxpDark'>
@@ -99,7 +103,9 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc }) => {
                     <Tab color='fxpRed'>
                         מנהל {type === 'mmop' ? 'השבוע' : 'החודש'}
                     </Tab>
-                    {type === 'mmop' && <Tab color='fxpGold'>פורום השבוע</Tab>}
+                    {type === 'mmop' && !cat.isForum && (
+                        <Tab color='fxpGold'>פורום השבוע</Tab>
+                    )}
                 </TabList>
                 {err[0] && (
                     <InlineError mb={-6} mt={6}>
@@ -109,16 +115,6 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc }) => {
                 <TabPanels>
                     <TabPanel>
                         <Fields
-                            nameSetter={setUsrName}
-                            linkSetter={setUsrLink}
-                            reasonSetter={setUsrReason}
-                            name={'user'}
-                            type={type}
-                        />
-                    </TabPanel>
-
-                    <TabPanel>
-                        <Fields
                             nameSetter={setMngrName}
                             linkSetter={setMngrLink}
                             reasonSetter={setMngrReason}
@@ -126,7 +122,16 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc }) => {
                             type={type}
                         />
                     </TabPanel>
-                    {type === 'mmop' && (
+                    <TabPanel>
+                        <Fields
+                            nameSetter={setUsrName}
+                            linkSetter={setUsrLink}
+                            reasonSetter={setUsrReason}
+                            name={'user'}
+                            type={type}
+                        />
+                    </TabPanel>
+                    {type === 'mmop' && !cat.isForum && (
                         <TabPanel>
                             <Fields
                                 nameSetter={setFrmName}

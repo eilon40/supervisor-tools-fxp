@@ -1,25 +1,15 @@
-import {
-    Select,
-    Box,
-    Button,
-    Checkbox,
-    Heading,
-    Text,
-    Flex,
-} from '@chakra-ui/react';
-import { useEffect, useRef, useState } from 'react';
+import { Select, Box, Button, Checkbox, Text, Flex } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import InlineError from '../../../components/general/InlineError';
 import c from '../../../data/categories';
 
-const PickCat = ({ setCat, stage, inc, type }) => {
+const PickCat = ({ setCat, stage, inc, type, cat }) => {
     const [currentCat, setCurrentCat] = useState({});
     const [catId, setCatId] = useState(-1);
     const [userFavCat, setUserFavCat] = useState({});
     const [err, setErr] = useState({ error: false, messeage: '' });
     const [saveCat, setSaveCat] = useState(false);
     const catLink = 'https://www.fxp.co.il/forumdisplay.php?f=';
-
-    const selectRef = useRef(null);
 
     useEffect(() => {
         if (catId !== -1) {
@@ -133,7 +123,6 @@ const PickCat = ({ setCat, stage, inc, type }) => {
             <Select
                 disabled={stage !== 0}
                 onChange={(e) => setCatId(parseInt(e.target.value))}
-                ref={selectRef}
             >
                 <option value={-1}>--- בחר קטגוריה מהרשימה ---</option>
                 {c.map((cat, index) => (
