@@ -145,21 +145,22 @@ const PickCat = ({ setCat, stage, inc, type }) => {
 
             {stage === 0 && (
                 <>
-                    <Checkbox
-                        display={'block'}
-                        mt={3}
-                        onChange={(e) => setSaveCat(e.target.checked)}
-                    >
-                        שמור את הקטגוריה והגדר כמועדפת.
-                    </Checkbox>
-                    {userFavCat && (
-                        <Box mt={-2} ml={6}>
-                            <sub style={{ color: 'red' }}>
-                                סימון זה ולחיצה על כפתור הבא, ימחקו את הקטגוריה
-                                המועדפת הנוכחית ויעדכנו את זו שנבחרה כעת.
-                            </sub>
-                        </Box>
-                    )}
+                    <Flex mt={4} justify={'center'} flexDirection={'column'}>
+                        <Checkbox
+                            onChange={(e) => setSaveCat(e.target.checked)}
+                        >
+                            שמור את הקטגוריה והגדר כמועדפת.
+                        </Checkbox>
+                        {userFavCat && (
+                            <Box mt={-2} ml={6}>
+                                <sub style={{ color: 'red' }}>
+                                    סימון זה ולחיצה על כפתור הבא, ימחקו את
+                                    הקטגוריה המועדפת הנוכחית ויעדכנו את זו
+                                    שנבחרה כעת.
+                                </sub>
+                            </Box>
+                        )}
+                    </Flex>
                     <Flex justify='center' align='center' gap={3}>
                         <Button
                             variant='next-btn'
