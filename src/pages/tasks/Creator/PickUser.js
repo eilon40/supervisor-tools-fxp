@@ -97,11 +97,11 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc, cat }) => {
             </Heading>
             <Tabs variant='soft-rounded' isFitted colorScheme='messenger'>
                 <TabList>
-                    <Tab color='fxpDark'>
-                        משתמש {type === 'mmop' ? 'השבוע' : 'החודש'}
-                    </Tab>
                     <Tab color='fxpRed'>
                         מנהל {type === 'mmop' ? 'השבוע' : 'החודש'}
+                    </Tab>
+                    <Tab color='fxpDark'>
+                        משתמש {type === 'mmop' ? 'השבוע' : 'החודש'}
                     </Tab>
                     {type === 'mmop' && !cat.isForum && (
                         <Tab color='fxpGold'>פורום השבוע</Tab>
