@@ -16,6 +16,8 @@ import links from '../../data/routes';
 
 const MenuComponent = () => {
     const menuSpacer = '|';
+    const isCurrentPage = (href) =>
+        window.location.pathname + window.location.search === href;
 
     return (
         <>
@@ -58,11 +60,15 @@ const MenuComponent = () => {
                         <Link
                             style={{ marginInlineStart: 0 }}
                             key={index}
-                            href={item.href}
+                            href={isCurrentPage(item.href) ? '#' : item.href}
                             target={item.target}
                         >
                             <Tooltip hasArrow label={item.label}>
-                                <Button variant='menu-btn' alt={'asdasd'}>
+                                <Button
+                                    isActive={isCurrentPage(item.href)}
+                                    variant='menu-btn'
+                                    alt={'asdasd'}
+                                >
                                     {item.name}{' '}
                                     {item.target === '_blank' && (
                                         <ExternalLinkIcon ml={1} mr={-1} />

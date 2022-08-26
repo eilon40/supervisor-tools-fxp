@@ -69,6 +69,9 @@ const components = {
                 _hover: {
                     bg: 'fxpBlue',
                 },
+                _active: {
+                    bg: 'fxpBlue',
+                },
             },
         },
         defaultProps: {
