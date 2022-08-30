@@ -62,10 +62,19 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc, cat }) => {
 
         let isOk = false;
 
-        const values =
-            type === 'mmop' && !cat.isForum
-                ? usrVals.concat(frmVals).concat(mngrVals)
-                : usrVals.concat(mngrVals);
+        let values;
+
+        if (type === 'mmop' && !cat.isForum) {
+            values = usrVals.concat(frmVals).concat(mngrVals);
+        } else if (
+            (type === 'mmoh' || type === 'mmop') &&
+            cat.isForum &&
+            cat.onlyManagerField
+        ) {
+            values = mngrVals;
+        } else {
+            values = usrVals.concat(mngrVals);
+        }
 
         for (let i = 0; i < values.length; i++) {
             if (values[i] === '') {
@@ -100,9 +109,15 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc, cat }) => {
                     <Tab color='fxpRed'>
                         מנהל {type === 'mmop' ? 'השבוע' : 'החודש'}
                     </Tab>
-                    <Tab color='fxpDark'>
-                        משתמש {type === 'mmop' ? 'השבוע' : 'החודש'}
-                    </Tab>
+
+                    {cat.onlyManagerField ? (
+                        ''
+                    ) : (
+                        <Tab color='fxpDark'>
+                            משתמש {type === 'mmop' ? 'השבוע' : 'החודש'}
+                        </Tab>
+                    )}
+
                     {type === 'mmop' && !cat.isForum && (
                         <Tab color='fxpGold'>פורום השבוע</Tab>
                     )}
@@ -122,6 +137,7 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc, cat }) => {
                             type={type}
                         />
                     </TabPanel>
+
                     <TabPanel>
                         <Fields
                             nameSetter={setUsrName}
@@ -131,17 +147,15 @@ const PickUser = ({ type, setUser, setManager, setForum, dec, inc, cat }) => {
                             type={type}
                         />
                     </TabPanel>
-                    {type === 'mmop' && !cat.isForum && (
-                        <TabPanel>
-                            <Fields
-                                nameSetter={setFrmName}
-                                linkSetter={setFrmLink}
-                                reasonSetter={setFrmReason}
-                                name={'forum'}
-                                type={type}
-                            />
-                        </TabPanel>
-                    )}
+                    <TabPanel>
+                        <Fields
+                            nameSetter={setFrmName}
+                            linkSetter={setFrmLink}
+                            reasonSetter={setFrmReason}
+                            name={'forum'}
+                            type={type}
+                        />
+                    </TabPanel>
                 </TabPanels>
             </Tabs>
             <Flex gap={4} justify='center'>

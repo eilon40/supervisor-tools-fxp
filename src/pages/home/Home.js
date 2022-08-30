@@ -6,18 +6,14 @@ import {
     AlertIcon,
     AlertDescription,
     AlertTitle,
-    Button,
-    Heading,
-    Link,
 } from '@chakra-ui/react';
 import c from '../../data/categories';
 import PageLayout from '../../components/layouts/page';
 import { useState } from 'react';
+import { FastAccess } from '../../components/home/fastAccess';
 
 const Home = () => {
     const [hasFavCat, setHasFavCat] = useState(null);
-    const relativeFavCatURL = (type, catId) =>
-        `/tasks?action=${type}&cat=${catId}`;
     const hasNoNosah = c.filter((cat) => !cat.generate);
 
     useEffect(() => {
@@ -61,51 +57,7 @@ const Home = () => {
                         }
                         return null;
                     })}
-                    {hasFavCat && (
-                        <Flex
-                            justify={'center'}
-                            align={'center'}
-                            flexDirection={'column'}
-                            mb={10}
-                        >
-                            <Heading variant={'normal-h'}>גישה מהירה</Heading>
-                            <Heading variant={'sub-h'} mt={3}>
-                                קטגורייה מועדפת: <b>{hasFavCat.name}</b>
-                            </Heading>
-                            <Flex gap={14} mt={4}>
-                                <Box>
-                                    <Link
-                                        href={relativeFavCatURL(
-                                            'mmop',
-                                            hasFavCat.id,
-                                        )}
-                                    >
-                                        <Button
-                                            variant={'menu-btn'}
-                                            size={'md'}
-                                        >
-                                            מחולל ממו"פ מהיר
-                                        </Button>
-                                    </Link>
-                                </Box>
-                                <Box>
-                                    <Link
-                                        href={relativeFavCatURL(
-                                            'mmoh',
-                                            hasFavCat.id,
-                                        )}
-                                    >
-                                        <Button
-                                            variant={'menu-btn'}
-                                            size={'md'}
-                                        >
-                                            מחולל ממו"ח מהיר
-                                        </Button>
-                                    </Link>
-                                </Box>
-                            </Flex>
-                        </Flex>
-                    )}
+                    <FastAccess favCat={hasFavCat} />
                 </Flex>
             </PageLayout>
         </Box>

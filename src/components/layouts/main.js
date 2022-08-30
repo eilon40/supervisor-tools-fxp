@@ -1,12 +1,4 @@
-import {
-    Container,
-    Flex,
-    Text,
-    Divider,
-    Link,
-    Box,
-    Image,
-} from '@chakra-ui/react';
+import { Container, Flex, Text, Divider, Link, Image } from '@chakra-ui/react';
 import logo from '../../images/logo-text.png';
 import Menu from '../nav/menu';
 
@@ -21,8 +13,9 @@ const MainLayout = ({ children }) => {
         >
             <Container
                 maxW='container.xl'
-                bg='white'
-                boxShadow={'0 2px 25px #00000011'}
+                bg='#FFFFFF88'
+                backdropFilter={'blur(5px)'}
+                boxShadow={'0 2px 25px #00000055'}
                 py={10}
                 px={{ base: 5, md: 20 }}
                 h={'max-content'}
@@ -47,7 +40,7 @@ const MainLayout = ({ children }) => {
                     flexDirection={'column'}
                     justify='center'
                     textAlign={'center'}
-                    color={'gray.300'}
+                    color={'gray.600'}
                 >
                     <Text fontStyle={'italic'} textAlign='center'>
                         עדכון אחרון: 26.08.22

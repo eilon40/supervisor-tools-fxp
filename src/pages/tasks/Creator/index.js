@@ -1,9 +1,8 @@
-import { Box, List, ListItem, ListIcon, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useState, useCallback, useEffect } from 'react';
 import { PickCategory, PickUser, CreateBBCode } from './stages';
 import c from '../../../data/categories';
-import { Navigate } from 'react-router-dom';
-import { MdCheckCircle } from 'react-icons/md';
+import { BadFunction } from '../../../components/errors/badCat';
 
 const Creator = ({ current, favCat }) => {
     const defaultCat = { name: '-', link: 'https://www.fxp.co.il/' };
@@ -59,41 +58,26 @@ const Creator = ({ current, favCat }) => {
         if (stage > 0) setStage((n) => n - 1);
     }, [stage]);
 
-    const hasGenFunction =
+    const badGenFunc =
         current === 'mmop'
-            ? c.filter((cat) => cat.generate)
-            : c.filter((cat) => cat.generateMmoh);
+            ? c.filter((cat) => !cat.generate)
+            : c.filter((cat) => !cat.generateMmoh); //TODO: remove '!' after finishing inserting all nosahim
 
     // if (redirect && favCat) return <Navigate to={`/tasks?action=${current}`} />;
     return (
         <Box>
-            {hasGenFunction.length !== c.length && (
-                <List spacing={3} mb={14}>
-                    <Text fontWeight={'bold'}>
-                        ניתן להפיק {current === 'mmop' ? 'ממו"פ' : 'ממו"ח'} רק
-                        עבור הקטגוריות הבאות:
-                    </Text>
-                    {hasGenFunction.map((cat, index) => {
-                        return (
-                            <ListItem key={index}>
-                                <ListIcon
-                                    key={index}
-                                    as={MdCheckCircle}
-                                    color='green.500'
-                                />
-                                קטגוריית {cat.name}
-                            </ListItem>
-                        );
-                    })}
-                </List>
+            {badGenFunc.length > 0 && (
+                <BadFunction badCats={badGenFunc} current={current} />
             )}
-            <PickCategory
-                stage={stage}
-                inc={inc}
-                setCat={(cat) => setCat(cat)}
-                type={current}
-                cat={cat}
-            />
+            {stage !== 2 && (
+                <PickCategory
+                    stage={stage}
+                    inc={inc}
+                    setCat={(cat) => setCat(cat)}
+                    type={current}
+                    cat={cat}
+                />
+            )}
             {stage === 1 && (
                 <PickUser
                     setUser={(usr) => setUser(usr)}

@@ -26,7 +26,7 @@ const mmoh = {
         {
             name: 'אשכול ממו"ח',
             href: 'https://www.fxp.co.il/showthread.php?t=16436014',
-            color: 'green',
+            color: 'red',
         },
         {
             name: 'פורום גבוהה',
@@ -36,11 +36,12 @@ const mmoh = {
         {
             name: 'דגשים לבחירה שלכם',
             href: 'https://www.fxp.co.il/showthread.php?t=19213527',
-            color: 'orange',
+            color: 'cyan',
         },
     ],
     title: 'הגשת ממו"ח חודשית',
-    subtitle: 'הסבר + מועד',
+    subtitle:
+        'הגשת מצטייני החודש, מנהל ומשתמש החודש - נדרש להגיש עד יום  לפני תחילת החודש הבא.',
 };
 
 export { mmop, mmoh };

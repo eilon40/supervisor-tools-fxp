@@ -1,10 +1,14 @@
 import { extendTheme } from '@chakra-ui/react';
+import bg from '../images/bg.png';
 
 const styles = {
     global: {
         body: {
             bg: '#FAFAFA',
-            color: 'fxpDark',
+            // color: 'fxpDark',
+            backgroundImage: `url('${bg}')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
         },
     },
 };
@@ -16,6 +20,7 @@ const colors = {
     fxpGold: '#daa520',
     fxpRed: '#ff0000',
     fxpSup: '#0000ff',
+    fxpWhite: '#fafafa',
 };
 
 const components = {
@@ -76,9 +81,31 @@ const components = {
                     bg: 'fxpBlue',
                 },
             },
+            'menu-noshadow-btn': {
+                color: '#fafafa',
+                bg: '#333333',
+                _hover: {
+                    bg: 'fxpBlue',
+                },
+                _active: {
+                    bg: 'fxpBlue',
+                },
+            },
         },
         defaultProps: {
             size: 'sm',
+        },
+    },
+    Text: {
+        variants: {
+            'link-like-red': {
+                textDecoration: 'underline',
+                cursor: 'pointer',
+                transition: '200ms all ease-in-out',
+                '&:hover': {
+                    color: 'red',
+                },
+            },
         },
     },
 };

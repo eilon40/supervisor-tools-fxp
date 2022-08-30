@@ -59,20 +59,7 @@ const Fields = ({ type, nameSetter, linkSetter, reasonSetter, name }) => {
             <Heading variant={'fields-h'}>
                 שדה בחירת <span style={{ color: fieldColor }}>{fieldName}</span>
             </Heading>
-            <Box mb={10}>
-                <Checkbox
-                    onChange={(e) => disableAndClearFields(e)}
-                    borderRadius={'md'}
-                    border='1px solid #cccccc77'
-                    size='lg'
-                    px={5}
-                    py={2}
-                    colorScheme='messenger'
-                >
-                    סמן במידה ואין {fieldName}{' '}
-                    {type === 'mmop' ? 'השבוע' : 'החודש'}.
-                </Checkbox>
-            </Box>
+
             <Flex
                 maxW={{ base: '100%', md: '60%' }}
                 flexDirection={'column'}
@@ -86,6 +73,7 @@ const Fields = ({ type, nameSetter, linkSetter, reasonSetter, name }) => {
                         disabled={disableAll}
                         onChange={(e) => nameSetter(e.target.value.trim())}
                         placeholder={`הזן את שם ה${fieldName}`}
+                        bg={'fxpWhite'}
                     />
                 </InputGroup>
                 <InputGroup>
@@ -95,14 +83,25 @@ const Fields = ({ type, nameSetter, linkSetter, reasonSetter, name }) => {
                         disabled={disableAll}
                         onChange={(e) => linkSetter(e.target.value.trim())}
                         placeholder={`הזן קישור תקין ל${fieldName}`}
+                        bg={'fxpWhite'}
                     />
                 </InputGroup>
                 <Textarea
                     ref={reasonRef}
+                    bg={'fxpWhite'}
                     disabled={disableAll}
                     onChange={(e) => reasonSetter(e.target.value.trim())}
                     placeholder={`הזן סיבה מפורטת מדוע נבחר ${fieldName} זה`}
                 />
+                <Box mb={10}>
+                    <Checkbox
+                        onChange={(e) => disableAndClearFields(e)}
+                        colorScheme='whatsapp'
+                    >
+                        סמן במידה ואין {fieldName}{' '}
+                        {type === 'mmop' ? 'השבוע' : 'החודש'}.
+                    </Checkbox>
+                </Box>
             </Flex>
         </Box>
     );

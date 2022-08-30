@@ -1,12 +1,13 @@
-import { Select, Box, Button, Checkbox, Text, Flex } from '@chakra-ui/react';
+import { Select, Box, Button, Checkbox, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import InlineError from '../../../components/general/InlineError';
 import c from '../../../data/categories';
+import { setFavCat } from '../../../data/favcat';
 
-const PickCat = ({ setCat, stage, inc, type, cat }) => {
+const PickCat = ({ setCat, stage, inc, type }) => {
     const [currentCat, setCurrentCat] = useState({});
     const [catId, setCatId] = useState(-1);
-    const [userFavCat, setUserFavCat] = useState({});
+    const [userFavCat, setUserFavCat] = useState(null);
     const [err, setErr] = useState({ error: false, messeage: '' });
     const [saveCat, setSaveCat] = useState(false);
     const catLink = 'https://www.fxp.co.il/forumdisplay.php?f=';
@@ -25,14 +26,17 @@ const PickCat = ({ setCat, stage, inc, type, cat }) => {
 
         if (favCatID) {
             const { id } = JSON.parse(favCatID);
-            const favCat = c.filter((cat) => cat.id === id)[0];
-            setUserFavCat(favCat);
+            if (id) {
+                const favCat = c.filter((cat) => cat.id === id)[0];
+                if (favCat) {
+                    setUserFavCat(favCat);
+                }
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [catId]);
 
     function nextStep() {
-        console.log(currentCat);
         if (type === 'mmop') {
             if (currentCat.generate) {
                 setCat(currentCat);
@@ -56,73 +60,17 @@ const PickCat = ({ setCat, stage, inc, type, cat }) => {
                 });
             }
         }
-        if (saveCat)
-            window.localStorage.setItem('fav', JSON.stringify({ id: catId }));
-    }
-
-    function nextStepFav() {
-        if (type === 'mmop') {
-            if (userFavCat.generate) {
-                setCat(userFavCat);
-                setErr({ error: false, message: '' });
-                inc();
-            } else {
-                setErr({
-                    error: true,
-                    messeage: `לקטגוריית ${userFavCat.name} לא ניתן להפיק ממו"פ כעת.`,
-                });
-            }
-        } else if (type === 'mmoh') {
-            if (userFavCat.generateMmoh) {
-                setCat(userFavCat);
-                setErr({ error: false, message: '' });
-                inc();
-            } else {
-                setErr({
-                    error: true,
-                    messeage: `לקטגוריית ${userFavCat.name} לא ניתן להפיק ממו"ח כעת.`,
-                });
-            }
-        }
-    }
-
-    function removeFav() {
-        window.localStorage.removeItem('fav');
-        window.location.reload();
+        if (saveCat) setFavCat(catId);
     }
 
     return (
         <Box>
             {err.error && <InlineError mb={5}>{err.messeage}</InlineError>}
 
-            {userFavCat.name && stage === 0 && (
-                <Box mb={7}>
-                    קטגוריה מועדפת: {userFavCat.name} (
-                    <Text
-                        display={'inline'}
-                        textDecoration={'underline'}
-                        cursor={'pointer'}
-                        _hover={{ color: 'fxpBlue' }}
-                        onClick={nextStepFav}
-                    >
-                        בחירה מהירה
-                    </Text>
-                    ,{' '}
-                    <Text
-                        textDecoration={'underline'}
-                        cursor={'pointer'}
-                        _hover={{ color: 'red' }}
-                        display={'inline'}
-                        onClick={removeFav}
-                    >
-                        הסר
-                    </Text>
-                    )
-                </Box>
-            )}
             <Select
                 disabled={stage !== 0}
                 onChange={(e) => setCatId(parseInt(e.target.value))}
+                bg={'fxpWhite'}
             >
                 <option value={-1}>--- בחר קטגוריה מהרשימה ---</option>
                 {c.map((cat, index) => (

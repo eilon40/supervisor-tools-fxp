@@ -21,10 +21,11 @@ const PageLayout = ({ title, subtitle, usefulLinks, children }) => {
                         <MenuButton
                             display={{ base: 'block', md: 'none' }}
                             mt={10}
-                            as={Button}
-                            rightIcon={<ChevronDownIcon />}
+                            as={Flex}
                         >
-                            קישורים שימושיים
+                            <Button variant='menu-btn' align='center' w='100%'>
+                                קישורים שימושיים <ChevronDownIcon ml={1} />
+                            </Button>
                         </MenuButton>
                         <MenuList>
                             {usefulLinks.map((item, index) => (
@@ -49,6 +50,7 @@ const PageLayout = ({ title, subtitle, usefulLinks, children }) => {
                         color={'fxpDark'}
                         py={1}
                         display={{ base: 'none', md: 'flex' }}
+                        bg={'fxpWhite'}
                     >
                         <Text>קישורים שימושיים:</Text>
                         {usefulLinks.map((link, index) => (

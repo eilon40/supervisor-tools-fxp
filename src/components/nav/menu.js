@@ -2,16 +2,14 @@ import React from 'react';
 import {
     Flex,
     Link,
-    Text,
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
-    IconButton,
     Button,
     Tooltip,
 } from '@chakra-ui/react';
-import { HamburgerIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import links from '../../data/routes';
 
 const MenuComponent = () => {
@@ -20,27 +18,33 @@ const MenuComponent = () => {
 
     return (
         <>
-            <Menu>
-                <MenuButton
-                    as={IconButton}
-                    aria-label='Options'
-                    icon={<HamburgerIcon />}
-                    variant='outline'
-                    display={{ base: 'block', md: 'none' }}
-                />
-                <MenuList>
-                    {links.map((item, index) => (
-                        <Link href={item.href} target={item.target} key={index}>
-                            <MenuItem>
-                                {item.name}{' '}
-                                {item.target === '_blank' && (
-                                    <ExternalLinkIcon ml={1} />
-                                )}
-                            </MenuItem>
-                        </Link>
-                    ))}
-                </MenuList>
-            </Menu>
+            <Flex justify={'center'} mt={10} mb={2}>
+                <Menu>
+                    <MenuButton
+                        aria-label='Options'
+                        as={Flex}
+                        display={{ base: 'block', md: 'none' }}
+                    >
+                        <Button variant='menu-btn'>תפריט האתר</Button>
+                    </MenuButton>
+                    <MenuList>
+                        {links.map((item, index) => (
+                            <Link
+                                href={item.href}
+                                target={item.target}
+                                key={index}
+                            >
+                                <MenuItem>
+                                    {item.name}{' '}
+                                    {item.target === '_blank' && (
+                                        <ExternalLinkIcon ml={1} />
+                                    )}
+                                </MenuItem>
+                            </Link>
+                        ))}
+                    </MenuList>
+                </Menu>
+            </Flex>
             <Flex
                 gap={4}
                 mt={5}
