@@ -6,16 +6,28 @@ const CreateBBCode = ({ data, cat, type }) => {
     const { user, forum, manager } = data;
     const [showCode, setShowCode] = useState(false);
     const [copied, setCopied] = useState(false);
-    // const wording =
-    //     type === 'mmop'
-    //         ? cat.generate(forum, user, manager) // פונקציה מחוללת ממו"פ
-    //         : cat.generateMmoh(user, manager); // פונקציה מחוללת ממו"ח
-    const wording =
-        type === 'mmop'
-            ? cat.generate(forum, user, manager) // פונקציה מחוללת ממו"פ
-            : cat.onlyManagerMmoh
-            ? cat.generateMmoh(manager)
-            : cat.generateMmoh(user, manager); // פונקציה מחוללת ממו"ח
+
+    const wording = getWording();
+
+    function getWording() {
+        if (type === 'mmop') {
+            if (cat.isForum) {
+                if (cat.onlyManagerField) {
+                    return cat.generate(manager);
+                }
+
+                return cat.generate(user, manager);
+            }
+
+            return cat.generate(forum, user, manager);
+        } else if (type === 'mmoh') {
+            if (cat.onlyManagerField) {
+                return cat.generateMmoh(manager);
+            }
+
+            return cat.generateMmoh(user, manager);
+        }
+    }
 
     const linkHagasha =
         type === 'mmop'

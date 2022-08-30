@@ -102,6 +102,7 @@ const components = {
                 textDecoration: 'underline',
                 cursor: 'pointer',
                 transition: '200ms all ease-in-out',
+                fontSize: '.8em',
                 '&:hover': {
                     color: 'red',
                 },

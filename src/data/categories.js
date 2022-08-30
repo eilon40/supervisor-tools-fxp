@@ -135,7 +135,7 @@ const categories = [
         id: 21,
         isForum: true,
         onlyManagerField: true, // condition to creat mmoh from only 1 arg - manager
-        generate: (forum = null, user, manager) => {
+        generate: (manager) => {
             return `[CENTER][IMG]https://i.imagesup.co/images2/a20ab23b7ccffedd998870675f32cba8ea73dad9.png[/IMG][FONT=almoni-dl]
 
         [/FONT][TABLE="align: center"]
@@ -145,7 +145,7 @@ const categories = [
         [TD="bgcolor: #028100"][COLOR=#ffffff][FONT=almoni-dl][U][SIZE=4][B] מנהל השבוע [/B][/SIZE][/U][/FONT][/COLOR][/TD]
         [/TR]
         [TR="bgcolor: #F5F5F5"]
-        [TD][FONT=rancho][SIZE=7][U][B][URL="${manager.profile}"][COLOR=#04a801]${manager.name}[/COLOR][/URL]
+        [TD][FONT=rancho][SIZE=7][U][B][COLOR=#04a801][URL="${manager.profile}"]${manager.name}[/URL][/COLOR]
         [/B][/U][/SIZE][/FONT][COLOR=#000000][FONT=almoni-dl]${manager.reason}[/FONT][/COLOR][/TD]
         [/TR]
         [/TABLE]
@@ -156,7 +156,8 @@ const categories = [
         [/FONT][/CENTER]`;
         },
         generateMmoh: (manager) => {
-            return `ER][IMG]https://i.imagesup.co/images2/a20ab23b7ccffedd998870675f32cba8ea73dad9.png[/IMG][FONT=almoni-dl]
+            console.log(manager);
+            return `[CENTER][IMG]https://i.imagesup.co/images2/a20ab23b7ccffedd998870675f32cba8ea73dad9.png[/IMG][FONT=almoni-dl]
 
             [/FONT][TABLE="align: center"]
             [TR="bgcolor: #17BC12"]
@@ -180,7 +181,7 @@ const categories = [
         name: 'פורום מלב אל לב',
         id: 359,
         isForum: true,
-        generate: (forum = null, user, manager) => {
+        generate: (user, manager) => {
             return `[CENTER][IMG]https://i.imagesup.co/images2/873397c93398d1a78b3ccd4de190e344e3e1413d.png[/IMG][/CENTER]
 
 
@@ -199,7 +200,7 @@ const categories = [
         [/TABLE]`;
         },
         generateMmoh: (user, manager) => {
-            return `CENTER][IMG]https://images.weserv.nl/?url=i.imgur.com/QQekdpd.png[/IMG][/CENTER]
+            return `[CENTER][IMG]https://images.weserv.nl/?url=i.imgur.com/QQekdpd.png[/IMG][/CENTER]
             [TABLE="width: 950, align: center"]
             [TR]
             [TD="align: center"][IMG]https://images.weserv.nl/?url=i.imgur.com/fy3dKJs.png[/IMG]​​[/TD]
@@ -218,7 +219,7 @@ const categories = [
         name: 'פורום היכל התהילה',
         id: 576,
         isForum: true,
-        generate: (forum = null, user, manager) => {
+        generate: (user, manager) => {
             return `[CENTER][IMG]https://i.imagesup.co/images2/656f462430923f02bf3eb6a971aff869b3aa5323.png[/IMG]
         [/CENTER]
         [TABLE="width: 900, align: center"]
@@ -384,12 +385,12 @@ ${forum.reason}
             
             
             פירוט:
-            [/B]${manager.reason}/FONT][/COLOR][/TD]
+            [/B]${manager.reason}[/FONT][/COLOR][/TD]
             [TD][COLOR=#0000FF][FONT=almoni-dl][B]כינוי המשתמש: [URL="${user.profile}"]${user.name}[/URL]
             
             
             פירוט:
-            [/B]${user.reason}/FONT][/COLOR][/TD]
+            [/B]${user.reason}[/FONT][/COLOR][/TD]
             [/TR]
             [/TABLE]
             [/CENTER]`;
