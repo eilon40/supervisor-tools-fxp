@@ -1082,7 +1082,7 @@ ${user.reason}[/TD]
         ${manager.reason}[/FONT][/TD]
         [TD="align: center"][FONT=tahoma][URL="${user.profile}"][B][SIZE=2][COLOR=#000000]${user.name}[/COLOR][/SIZE][/B][/URL]
         
-        [/FONT][FONT=tahoma]${user.reaosn}[/FONT][/TD]
+        [/FONT][FONT=tahoma]${user.reason}[/FONT][/TD]
         [TD="align: center"][FONT=tahoma][B][URL="${forum.href}"][COLOR=#daa520]${forum.name}[/COLOR][/URL]
         
         [/B]${forum.reason}[/FONT][/TD]
