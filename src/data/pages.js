@@ -25,7 +25,7 @@ const mmoh = {
     usefulLinks: [
         {
             name: 'אשכול ממו"ח',
-            href: 'https://www.fxp.co.il/showthread.php?t=16436014',
+            href: 'https://www.fxp.co.il/showthread.php?t=12349038',
             color: 'red',
         },
         {

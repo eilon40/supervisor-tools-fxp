@@ -1069,25 +1069,25 @@ ${user.reason}[/TD]
         generate: (forum, user, manager) => {
             return `[CENTER][IMG]https://i.imagesup.co/images2/90bc29311a15d3230913188613f20b7d966e5369.png[/IMG]
 
-        [/CENTER]
-        [TABLE="class: cms_table, width: 950, align: center"]
-        [TR="bgcolor: #346C3D"]
-        [TD="align: center"][IMG]https://images.weserv.nl/?url=i.imgur.com/5Wgzwzg.png[/IMG][/TD]
-        [TD="align: center"][IMG]https://images.weserv.nl/?url=i.imgur.com/GIZ2FBM.png[/IMG][/TD]
-        [TD="align: center"][IMG]https://images.weserv.nl/?url=i.imgur.com/HdTntuE.png[/IMG][/TD]
-        [/TR]
-        [TR]
-        [TD="align: center"][FONT=tahoma][B][URL="${manager.profile}"][COLOR=#ff0000]${manager.name}[/COLOR][/URL][/B]
-        
-        ${manager.reason}[/FONT][/TD]
-        [TD="align: center"][FONT=tahoma][URL="${user.profile}"][B][SIZE=2][COLOR=#000000]${user.name}[/COLOR][/SIZE][/B][/URL]
-        
-        [/FONT][FONT=tahoma]${user.reason}[/FONT][/TD]
-        [TD="align: center"][FONT=tahoma][B][URL="${forum.href}"][COLOR=#daa520]${forum.name}[/COLOR][/URL]
-        
-        [/B]${forum.reason}[/FONT][/TD]
-        [/TR]
-        [/TABLE]`;
+[/CENTER]
+[TABLE="class: cms_table, width: 950, align: center"]
+[TR="bgcolor: #346C3D"]
+[TD="align: center"][IMG]https://images.weserv.nl/?url=i.imgur.com/5Wgzwzg.png[/IMG][/TD]
+[TD="align: center"][IMG]https://images.weserv.nl/?url=i.imgur.com/GIZ2FBM.png[/IMG][/TD]
+[TD="align: center"][IMG]https://images.weserv.nl/?url=i.imgur.com/HdTntuE.png[/IMG][/TD]
+[/TR]
+[TR]
+[TD="align: center"][FONT=tahoma][B][URL="${manager.profile}"][COLOR=#ff0000]${manager.name}[/COLOR][/URL][/B]
+
+${manager.reason}[/FONT][/TD]
+[TD="align: center"][FONT=tahoma][URL="${user.profile}"][B][SIZE=2][COLOR=#000000]${user.name}[/COLOR][/SIZE][/B][/URL]
+
+[/FONT][FONT=tahoma]${user.reason}[/FONT][/TD]
+[TD="align: center"][FONT=tahoma][B][URL="${forum.href}"][COLOR=#daa520]${forum.name}[/COLOR][/URL]
+
+[/B]${forum.reason}[/FONT][/TD]
+[/TR]
+[/TABLE]`;
         },
         generateMmoh: (user, manager) => {
             return `[CENTER][IMG]https://i.imagesup.co/images2/90bc29311a15d3230913188613f20b7d966e5369.png[/IMG][/CENTER]
