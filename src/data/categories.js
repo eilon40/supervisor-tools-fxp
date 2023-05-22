@@ -75,7 +75,7 @@ const categories = [
         [TD="bgcolor: #42AEC9"][IMG]https://i.imagesup.co/images2/9824bed3ecfe505d83b789ecb7d59a774d165fd5.png[/IMG][/TD]
         [/TR]
         [TR="bgcolor: #FFFFFF"]
-        [TD][B][URL="${manager.profile}"][COLOR=#0066ff]${manager.user}[/COLOR][/URL]
+        [TD][B][URL="${manager.profile}"][COLOR=#0066ff]${manager.name}[/COLOR][/URL]
         [/B][B][SIZE=3]${manager.reason}[/SIZE][/B][/TD]
         [/TR]
         [TR]
@@ -511,7 +511,7 @@ ${user.reason}
         [TD][FONT=open sans hebrew][COLOR=#333333][FONT=arial][FONT=open sans hebrew][IMG]https://i.imagesup.co/images2/14616055bacfe549c84926ba524ef67496efb147.png[/IMG][/FONT][/FONT][/COLOR][/FONT]
         
         
-        [FONT=open sans hebrew][SIZE=3][B][COLOR=#FF0000][FONT=Helvetica][B][URL="${manager.profile}"][COLOR=red][B]${manager.user}[/B][/COLOR][/URL]
+        [FONT=open sans hebrew][SIZE=3][B][COLOR=#FF0000][FONT=Helvetica][B][URL="${manager.profile}"][COLOR=red][B]${manager.name}[/B][/COLOR][/URL]
         [/B][/FONT][/COLOR]
         [/B]${manager.reason}[/SIZE]
         
@@ -635,7 +635,7 @@ ${user.reason}
             [TD="bgcolor: #75d4d5, align: center"][FONT=open sans hebrew][SIZE=5][B][COLOR=#ffffff][IMG]https://i.imagesup.co/images2/88dbee3740c6d13cbfbcc99099be6b2f9de0b4ba.png[/IMG][/COLOR][/B][/SIZE][/FONT][/TD]
             [/TR]
             [TR]
-            [TD="bgcolor: #FFFFFF, align: center"][FONT=open sans hebrew][SIZE=3][SIZE=4][B][COLOR=#ff0000][URL="${manager.profile}"]${manager.user}[/URL] 
+            [TD="bgcolor: #FFFFFF, align: center"][FONT=open sans hebrew][SIZE=3][SIZE=4][B][COLOR=#ff0000][URL="${manager.profile}"]${manager.name}[/URL] 
             [/COLOR][/B][/SIZE]
             [COLOR=#008080]${manager.reason}/COLOR][/SIZE][/FONT][/TD]
             [TD="bgcolor: #FFFFFF, align: center"][FONT=open sans hebrew][SIZE=3][SIZE=4][B][URL="${user.profile}"]${user.name}[/URL]
